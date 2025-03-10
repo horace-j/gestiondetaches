@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Si c'est un utilisateur normal, rediriger vers son tableau de bord
                 header("Location: user_dashboard.php");
             } else {
-                // Si le rôle est autre, rediriger vers une page par défaut
+                // Si le rôle est autre, rediriger vers une page par défaut.
                 header("Location: default_dashboard.php");
             }
             exit();
@@ -50,10 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         header("Location: pages-error-404.php");
-
     }
 
     $stmt->close();
     $conn->close();
 }
-?>
