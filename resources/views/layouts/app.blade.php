@@ -10,8 +10,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Favicons -->
-    <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('/images/LOGO.png') }}" rel="icon">
+    <link href="{{ asset('/images/LOGO.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -28,6 +28,7 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Styles personnalisés -->
     <style>
         /* Fond blanc pour le body */
@@ -59,7 +60,8 @@
         }
 
         a:hover {
-            color: #606060;
+            color: black !important;
+            font-weight: bold !important;
             text-decoration: underline;
         }
 
@@ -160,12 +162,13 @@
 </head>
 
 <body>
+    <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
-                <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">NiceAdmin</span>
+            <a href="/home" class=" d-flex align-items-center">
+                <img src="/images/LOGO.png" height="60px" alt="">
+                <span class="d-none d-lg-block">PROMANAGE</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -327,9 +330,6 @@
 
                 </li><!-- End Messages Nav -->
 
-
-
-
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
@@ -379,9 +379,7 @@
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <i class="bi bi-box-arrow-right"></i>
-                                po
-
-
+                                <span>Sign Out</span>
                             </a>
                         </li>
 
@@ -393,318 +391,329 @@
 
     </header><!-- End Header -->
 
-    <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar">
 
-        <ul class="sidebar-nav" id="sidebar-nav">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="index.html">
-                    <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
+                <!-- ======= Sidebar ======= -->
+                <aside id="sidebar" class="sidebar">
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="components-alerts.html">
-                            <i class="bi bi-circle"></i><span>Alerts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-accordion.html">
-                            <i class="bi bi-circle"></i><span>Accordion</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-badges.html">
-                            <i class="bi bi-circle"></i><span>Badges</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-breadcrumbs.html">
-                            <i class="bi bi-circle"></i><span>Breadcrumbs</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-buttons.html">
-                            <i class="bi bi-circle"></i><span>Buttons</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-cards.html">
-                            <i class="bi bi-circle"></i><span>Cards</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-carousel.html">
-                            <i class="bi bi-circle"></i><span>Carousel</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-list-group.html">
-                            <i class="bi bi-circle"></i><span>List group</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-modal.html">
-                            <i class="bi bi-circle"></i><span>Modal</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-tabs.html">
-                            <i class="bi bi-circle"></i><span>Tabs</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-pagination.html">
-                            <i class="bi bi-circle"></i><span>Pagination</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-progress.html">
-                            <i class="bi bi-circle"></i><span>Progress</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-spinners.html">
-                            <i class="bi bi-circle"></i><span>Spinners</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-tooltips.html">
-                            <i class="bi bi-circle"></i><span>Tooltips</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Components Nav -->
+                    <ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="forms-elements.html">
-                            <i class="bi bi-circle"></i><span>Form Elements</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="forms-layouts.html">
-                            <i class="bi bi-circle"></i><span>Form Layouts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="forms-editors.html">
-                            <i class="bi bi-circle"></i><span>Form Editors</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="forms-validation.html">
-                            <i class="bi bi-circle"></i><span>Form Validation</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Forms Nav -->
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="index.html">
+                                <i class="bi bi-grid"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li><!-- End Dashboard Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="tables-general.html">
-                            <i class="bi bi-circle"></i><span>General Tables</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="tables-data.html">
-                            <i class="bi bi-circle"></i><span>Data Tables</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Tables Nav -->
+                        <li class="nav-item">
+                            <a class="nav-link " data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                                <i class="bi bi-menu-button-wide"></i><span>Utilisateur</span><i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+                                <li>
+                                    <a href="/employer/create">
+                                        <i class="bi bi-circle"></i><span>Creer</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-accordion.html">
+                                        <i class="bi bi-circle"></i><span>Accordion</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-badges.html" class="active">
+                                        <i class="bi bi-circle"></i><span>Badges</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-breadcrumbs.html">
+                                        <i class="bi bi-circle"></i><span>Breadcrumbs</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-buttons.html">
+                                        <i class="bi bi-circle"></i><span>Buttons</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-cards.html">
+                                        <i class="bi bi-circle"></i><span>Cards</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-carousel.html">
+                                        <i class="bi bi-circle"></i><span>Carousel</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-list-group.html">
+                                        <i class="bi bi-circle"></i><span>List group</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-modal.html">
+                                        <i class="bi bi-circle"></i><span>Modal</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-tabs.html">
+                                        <i class="bi bi-circle"></i><span>Tabs</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-pagination.html">
+                                        <i class="bi bi-circle"></i><span>Pagination</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-progress.html">
+                                        <i class="bi bi-circle"></i><span>Progress</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-spinners.html">
+                                        <i class="bi bi-circle"></i><span>Spinners</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-tooltips.html">
+                                        <i class="bi bi-circle"></i><span>Tooltips</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li><!-- End Components Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="charts-chartjs.html">
-                            <i class="bi bi-circle"></i><span>Chart.js</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="charts-apexcharts.html">
-                            <i class="bi bi-circle"></i><span>ApexCharts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="charts-echarts.html">
-                            <i class="bi bi-circle"></i><span>ECharts</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Charts Nav -->
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                                <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                                <li>
+                                    <a href="forms-elements.html">
+                                        <i class="bi bi-circle"></i><span>Form Elements</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="forms-layouts.html">
+                                        <i class="bi bi-circle"></i><span>Form Layouts</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="forms-editors.html">
+                                        <i class="bi bi-circle"></i><span>Form Editors</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="forms-validation.html">
+                                        <i class="bi bi-circle"></i><span>Form Validation</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li><!-- End Forms Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="icons-bootstrap.html">
-                            <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons-remix.html">
-                            <i class="bi bi-circle"></i><span>Remix Icons</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons-boxicons.html">
-                            <i class="bi bi-circle"></i><span>Boxicons</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Icons Nav -->
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                                <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                                <li>
+                                    <a href="tables-general.html">
+                                        <i class="bi bi-circle"></i><span>General Tables</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="tables-data.html">
+                                        <i class="bi bi-circle"></i><span>Data Tables</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li><!-- End Tables Nav -->
 
-            <li class="nav-heading">Pages</li>
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                                <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                                <li>
+                                    <a href="charts-chartjs.html">
+                                        <i class="bi bi-circle"></i><span>Chart.js</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="charts-apexcharts.html">
+                                        <i class="bi bi-circle"></i><span>ApexCharts</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="charts-echarts.html">
+                                        <i class="bi bi-circle"></i><span>ECharts</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li><!-- End Charts Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link " href="users-profile.html">
-                    <i class="bi bi-person"></i>
-                    <span>Profile</span>
-                </a>
-            </li><!-- End Profile Page Nav -->
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+                                <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                                <li>
+                                    <a href="icons-bootstrap.html">
+                                        <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="icons-remix.html">
+                                        <i class="bi bi-circle"></i><span>Remix Icons</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="icons-boxicons.html">
+                                        <i class="bi bi-circle"></i><span>Boxicons</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li><!-- End Icons Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-faq.html">
-                    <i class="bi bi-question-circle"></i>
-                    <span>F.A.Q</span>
-                </a>
-            </li><!-- End F.A.Q Page Nav -->
+                        <li class="nav-heading">Pages</li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-contact.html">
-                    <i class="bi bi-envelope"></i>
-                    <span>Contact</span>
-                </a>
-            </li><!-- End Contact Page Nav -->
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="users-profile.html">
+                                <i class="bi bi-person"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li><!-- End Profile Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-register.html">
-                    <i class="bi bi-card-list"></i>
-                    <span>Register</span>
-                </a>
-            </li><!-- End Register Page Nav -->
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="pages-faq.html">
+                                <i class="bi bi-question-circle"></i>
+                                <span>F.A.Q</span>
+                            </a>
+                        </li><!-- End F.A.Q Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-login.html">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Login</span>
-                </a>
-            </li><!-- End Login Page Nav -->
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="pages-contact.html">
+                                <i class="bi bi-envelope"></i>
+                                <span>Contact</span>
+                            </a>
+                        </li><!-- End Contact Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-error-404.html">
-                    <i class="bi bi-dash-circle"></i>
-                    <span>Error 404</span>
-                </a>
-            </li><!-- End Error 404 Page Nav -->
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="pages-register.html">
+                                <i class="bi bi-card-list"></i>
+                                <span>Register</span>
+                            </a>
+                        </li><!-- End Register Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-blank.html">
-                    <i class="bi bi-file-earmark"></i>
-                    <span>Blank</span>
-                </a>
-            </li><!-- End Blank Page Nav -->
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="pages-login.html">
+                                <i class="bi bi-box-arrow-in-right"></i>
+                                <span>Login</span>
+                            </a>
+                        </li><!-- End Login Page Nav -->
 
-            <li>
-                @if (Route::has('login'))
-                <div class="">
-                    @auth
-                    <!-- Nom de l'utilisateur connecté avec option de déconnexion au clic -->
-                    <div style="display: inline-block; position: relative;">
-                        <span style="font-size: 18px; font-weight:bold; padding:5px; color:black; cursor: pointer;" id="user-name">
-                            {{ Auth::user()->name }}
-                        </span>
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="pages-error-404.html">
+                                <i class="bi bi-dash-circle"></i>
+                                <span>Error 404</span>
+                            </a>
+                        </li><!-- End Error 404 Page Nav -->
 
-                        <a href="/dashboard"
-                            style="font-size: 20px; font-weight:bold; text-decoration:none; padding:5px; color:black"
-                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                        <li class="nav-item">
 
-                            <span style="font-size: 10px;"> Dashboard
-                            </span>
-                        </a>
 
-                        <!-- Bouton de déconnexion (affiché au clic) -->
-                        <form method="POST" action="{{Config::get('app.url')}}/logout" style="display:none; position: absolute; top: 25px; left: 0; background: white; border: 1px solid #ddd; padding: 5px; border-radius: 5px; z-index: 10;" id="logout-form">
-                            @csrf
-                            <button type="submit"
-                                style="font-size: 16px; font-weight:bold; text-decoration:none; color:black; background:none; border:none; cursor:pointer;"
-                                class="hover:text-red-600">
-                                Déconnexion
-                            </button>
-                        </form>
-                    </div>
 
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            const userName = document.getElementById('user-name');
-                            const logoutForm = document.getElementById('logout-form');
+                            @if (Route::has('login'))
+                            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                                @auth
+                                <!-- Nom de l'utilisateur connecté avec option de déconnexion au clic -->
+                                <div style="display: inline-block; position: relative;">
+                                    <span style="font-size: 18px; font-weight:bold; padding:5px; color:black; cursor: pointer;" id="user-name">
+                                        {{ Auth::user()->name }}
+                                    </span>
 
-                            // Affiche ou cache le formulaire de déconnexion lors du clic
-                            userName.addEventListener('click', () => {
-                                if (logoutForm.style.display === 'none' || logoutForm.style.display === '') {
-                                    logoutForm.style.display = 'block';
-                                } else {
-                                    logoutForm.style.display = 'none';
-                                }
-                            });
+                                    <a href="/dashboard"
+                                        style="font-size: 20px; font-weight:bold; text-decoration:none; padding:5px; color:black"
+                                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
 
-                            // Cache le formulaire si on clique ailleurs sur la page
-                            document.addEventListener('click', (e) => {
-                                if (!userName.contains(e.target) && !logoutForm.contains(e.target)) {
-                                    logoutForm.style.display = 'none';
-                                }
-                            });
-                        });
-                    </script>
-                    @else
-                    <!-- Lien pour se connecter -->
-                    <a href="/dashboard"
-                        style="font-size: 20px; font-weight:bold; text-decoration:none; padding:5px; color:black"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                                        <span style="font-size: 10px;">
+                                        </span>
+                                    </a>
 
-                        <span style="font-size: 10px;">
-                        </span>
-                    </a>
+                                    <!-- Bouton de déconnexion (affiché au clic) -->
+                                    <form method="POST" action="/logout" style="display:none; position: absolute; top: 25px; left: 0; background: white; border: 1px solid #ddd; padding: 5px; border-radius: 5px; z-index: 10;" id="logout-form">
+                                        @csrf
+                                        <button type="submit"
+                                            style="font-size: 16px; font-weight:bold; text-decoration:none; color:black; background:none; border:none; cursor:pointer;"
+                                            class="hover:text-red-600">
+                                            Déconnexion
+                                        </button>
+                                    </form>
+                                </div>
 
-                    <!-- Lien pour s'enregistrer -->
-                    @if (Route::has('register'))
-                    <a href="{{ route('register') }}"
-                        style="font-size: 20px; font-weight:bold; text-decoration:none; padding:5px; color:black"
-                        class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                    </a>
-                    @endif
-                    @endauth
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        const userName = document.getElementById('user-name');
+                                        const logoutForm = document.getElementById('logout-form');
+
+                                        // Affiche ou cache le formulaire de déconnexion lors du clic
+                                        userName.addEventListener('click', () => {
+                                            if (logoutForm.style.display === 'none' || logoutForm.style.display === '') {
+                                                logoutForm.style.display = 'block';
+                                            } else {
+                                                logoutForm.style.display = 'none';
+                                            }
+                                        });
+
+                                        // Cache le formulaire si on clique ailleurs sur la page
+                                        document.addEventListener('click', (e) => {
+                                            if (!userName.contains(e.target) && !logoutForm.contains(e.target)) {
+                                                logoutForm.style.display = 'none';
+                                            }
+                                        });
+                                    });
+                                </script>
+                                @else
+                                <!-- Lien pour se connecter -->
+                                <a href="/dashboard"
+                                    style="font-size: 20px; font-weight:bold; text-decoration:none; padding:5px; color:black"
+                                    class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+
+                                    <span style="font-size: 10px;">
+                                    </span>
+                                </a>
+
+                                <!-- Lien pour s'enregistrer -->
+                                @if (Route::has('register'))
+                                <a href="{{ route('register') }}"
+                                    style="font-size: 20px; font-weight:bold; text-decoration:none; padding:5px; color:black"
+                                    class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                                </a>
+                                @endif
+                                @endauth
+                            </div>
+                            @endif
+
+
+                        </li><!-- End Blank Page Nav -->
+
+                    </ul>
+
+                </aside><!-- End Sidebar-->
+
+            </div>
+            <div class="col-md-10">
+
+                <div class="container py-5  ">
+                    @yield('content')
                 </div>
-                @endif
-            </li>
 
-
-        </ul>
-
-    </aside><!-- End Sidebar-->
-
-
+            </div>
+        </div>
+    </div>
 
 
     <footer>

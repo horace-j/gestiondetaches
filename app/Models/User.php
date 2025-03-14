@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class User extends Authenticatable
 {
@@ -56,5 +58,12 @@ class User extends Authenticatable
                 $user->id = (string) Str::uuid();
             }
         });
+    }
+
+    use HasFactory, HasUuids;
+
+    public function employer(): HasOne
+    {
+        return $this->hasOne(Employer::class, 'user_id');
     }
 }

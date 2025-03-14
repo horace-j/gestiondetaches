@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\EmployerController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +52,19 @@ Route::middleware('guest')->group(function () {
 
 Route::get('/home', [RegisteredUserController::class, 'homes'])->name('home');
 
-
 // Route de déconnexion
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', function () {
+        return view('fichers.profile', ['employer' => Auth::user()->employer]);
+    })->name('profile');
+
+    Route::post('/employer/create', [EmployerController::class, 'store'])->name('employer.store');
+});
+
+Route::get('/employer/create', function () {
+    return view('employer.create');
+})->middleware('auth')->name('employer.create');
