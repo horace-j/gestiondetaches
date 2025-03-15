@@ -158,6 +158,26 @@
         #logout-form button:hover {
             color: #606060;
         }
+
+        .actived {
+            color: white !important;
+            /* Texte en blanc */
+            background-color: grey;
+            /* Fond en gris */
+            padding: 5px 10px;
+            /* Ajouter un peu d'espace autour du texte */
+            border-radius: 4px;
+            /* Arrondir les coins */
+            text-decoration: none !important;
+            /* Supprimer le soulignement du lien */
+        }
+
+        li a:hover {
+            color: white;
+            /* Texte en blanc au survol */
+            background-color: darkgrey;
+            /* Fond en gris foncé au survol */
+        }
     </style>
 </head>
 
@@ -419,65 +439,57 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="components-accordion.html">
-                                        <i class="bi bi-circle"></i><span>Accordion</span>
+                                    <a href="{{ route('profile') }}" class="{{ Route::is('profile') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>Votre profile</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="components-badges.html" class="active">
-                                        <i class="bi bi-circle"></i><span>Badges</span>
+                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>Vos projets</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="components-breadcrumbs.html">
-                                        <i class="bi bi-circle"></i><span>Breadcrumbs</span>
+                                    <a href="{{ route('projets.index') }}" class="{{ Route::is('projets.index') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span> Listes des projets </span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="components-buttons.html">
-                                        <i class="bi bi-circle"></i><span>Buttons</span>
+                                    <a href="{{ route('projets.store') }}" class="{{ Route::is('projets.store') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>projets.store</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="components-cards.html">
-                                        <i class="bi bi-circle"></i><span>Cards</span>
+                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>Vos projets</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="components-carousel.html">
-                                        <i class="bi bi-circle"></i><span>Carousel</span>
+                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>Vos projets</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="components-list-group.html">
-                                        <i class="bi bi-circle"></i><span>List group</span>
+                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>Vos projets</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="components-modal.html">
-                                        <i class="bi bi-circle"></i><span>Modal</span>
+                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>Vos projets</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="components-tabs.html">
-                                        <i class="bi bi-circle"></i><span>Tabs</span>
+                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>Vos projets</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="components-pagination.html">
-                                        <i class="bi bi-circle"></i><span>Pagination</span>
+                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>Vos projets</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="components-progress.html">
-                                        <i class="bi bi-circle"></i><span>Progress</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="components-spinners.html">
-                                        <i class="bi bi-circle"></i><span>Spinners</span>
-                                    </a>
-                                </li>
+
+
                                 <li>
                                     <a href="components-tooltips.html">
                                         <i class="bi bi-circle"></i><span>Tooltips</span>

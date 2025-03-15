@@ -7,7 +7,8 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\EmployerController;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\ProjetController;
+use App\Http\Controllers\TacheController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,3 +69,16 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/employer/create', function () {
     return view('employer.create');
 })->middleware('auth')->name('employer.create');
+
+
+/* Projet et taches */
+Route::get('/projets/create', [ProjetController::class, 'create'])->name('projets.create');
+
+Route::get('/projets', [ProjetController::class, 'index'])->name('projets.index');
+Route::get('/projets/{id}', [ProjetController::class, 'show'])->name('projets.show');
+
+Route::put('/taches/{id}/toggle-status', [TacheController::class, 'toggleStatus'])->name('taches.toggleStatus');
+Route::post('/projets', [ProjetController::class, 'store'])->name('projets.store');
+
+Route::get('/projets/{projet}/taches/create', [TacheController::class, 'create'])->name('taches.create');
+Route::post('/projets/{projet}/taches', [TacheController::class, 'store'])->name('taches.store');
