@@ -82,3 +82,4 @@ Route::post('/projets', [ProjetController::class, 'store'])->name('projets.store
 
 Route::get('/projets/{projet}/taches/create', [TacheController::class, 'create'])->name('taches.create');
 Route::post('/projets/{projet}/taches', [TacheController::class, 'store'])->name('taches.store');
+Route::get('/liste', [EmployerController::class, 'listes'])->name('liste');

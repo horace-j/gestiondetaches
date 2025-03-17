@@ -11,8 +11,10 @@
 --------------------------------------------------------------*/
 /* Conteneur de la table */
 .table-container {
-  overflow-y: auto; /* Permet le défilement vertical */
-  max-height: 500px; /* Limite la hauteur pour permettre le défilement si nécessaire */
+  overflow-y: auto;
+  /* Permet le défilement vertical */
+  max-height: 500px;
+  /* Limite la hauteur pour permettre le défilement si nécessaire */
   background-color: #f8f9fa;
   padding: 10px;
   border-radius: 8px;
@@ -21,16 +23,22 @@
 
 table {
   width: 100%;
-  border-collapse: collapse; /* Élimine les espaces entre les cellules */
+  border-collapse: collapse;
+  /* Élimine les espaces entre les cellules */
 }
 
-th, td {
-  padding: 12px 15px; /* Padding pour les cellules */
+th,
+td {
+  padding: 12px 15px;
+  /* Padding pour les cellules */
   text-align: left;
   border-bottom: 1px solid #ddd;
-  white-space: nowrap; /* Empêche le texte de se briser sur plusieurs lignes */
-  overflow: hidden; /* Masque le texte qui dépasse */
-  text-overflow: ellipsis; /* Affiche '...' si le texte dépasse */
+  white-space: nowrap;
+  /* Empêche le texte de se briser sur plusieurs lignes */
+  overflow: hidden;
+  /* Masque le texte qui dépasse */
+  text-overflow: ellipsis;
+  /* Affiche '...' si le texte dépasse */
 }
 
 th {
@@ -81,7 +89,7 @@ body {
 }
 
 a {
-  color: #4154f1;
+  color: #888888;
   text-decoration: none;
 }
 
@@ -138,7 +146,7 @@ h6 {
   right: 15px;
   bottom: 15px;
   z-index: 99999;
-  background: #4154f1;
+  background: #888888;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -302,7 +310,7 @@ h6 {
 }
 
 
-.formulaire{
+.formulaire {
   font-size: 17px;
   font-weight: 500;
   color: #012970;
@@ -363,7 +371,7 @@ h6 {
 
 .accordion-flush .accordion-button:not(.collapsed) {
   box-shadow: none;
-  color: #4154f1;
+  color: #888888;
 }
 
 .accordion-flush .accordion-body {
@@ -411,13 +419,17 @@ h6 {
 
 .nav-tabs-bordered .nav-link:hover,
 .nav-tabs-bordered .nav-link:focus {
-  color: #4154f1;
+  color: #888888;
+  background-color: #444444;
+  color: white;
+  font-weight: bold;
 }
 
 .nav-tabs-bordered .nav-link.active {
   background-color: #fff;
-  color: #4154f1;
-  border-bottom: 2px solid #4154f1;
+  color: #000000;
+  border-bottom: 2px solid #888888;
+  font-weight: bold !important;
 }
 
 /*--------------------------------------------------------------
@@ -753,7 +765,7 @@ h6 {
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: #4154f1;
+  color: #888888;
   transition: 0.3;
   background: #f6f9ff;
   padding: 10px 15px;
@@ -763,7 +775,7 @@ h6 {
 .sidebar-nav .nav-link i {
   font-size: 16px;
   margin-right: 10px;
-  color: #4154f1;
+  color: #888888;
 }
 
 .sidebar-nav .nav-link.collapsed {
@@ -776,12 +788,12 @@ h6 {
 }
 
 .sidebar-nav .nav-link:hover {
-  color: #4154f1;
+  color: #888888;
   background: #f6f9ff;
 }
 
 .sidebar-nav .nav-link:hover i {
-  color: #4154f1;
+  color: #888888;
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
@@ -819,11 +831,11 @@ h6 {
 
 .sidebar-nav .nav-content a:hover,
 .sidebar-nav .nav-content a.active {
-  color: #4154f1;
+  color: #888888;
 }
 
 .sidebar-nav .nav-content a.active i {
-  background-color: #4154f1;
+  background-color: #888888;
 }
 
 /*--------------------------------------------------------------
@@ -846,7 +858,7 @@ h6 {
 
 .dashboard .filter .icon:hover,
 .dashboard .filter .icon:focus {
-  color: #4154f1;
+  color: #888888;
 }
 
 .dashboard .filter .dropdown-header {
@@ -992,12 +1004,12 @@ h6 {
 }
 
 .profile .profile-overview .card-title {
-  color: #012970;
+  color: #000000;
 }
 
 .profile .profile-overview .label {
   font-weight: 600;
-  color: rgba(1, 41, 112, 0.6);
+
 }
 
 .profile .profile-edit label {
@@ -1015,7 +1027,7 @@ h6 {
 .faq .basic h6 {
   font-size: 18px;
   font-weight: 600;
-  color: #4154f1;
+  color: #888888;
 }
 
 .faq .basic p {
@@ -1032,7 +1044,7 @@ h6 {
 .contact .info-box i {
   font-size: 38px;
   line-height: 0;
-  color: #4154f1;
+  color: #888888;
 }
 
 .contact .info-box h3 {
@@ -1099,7 +1111,7 @@ h6 {
 
 .contact .php-email-form input:focus,
 .contact .php-email-form textarea:focus {
-  border-color: #4154f1;
+  border-color: #888888;
 }
 
 .contact .php-email-form input {
@@ -1111,7 +1123,7 @@ h6 {
 }
 
 .contact .php-email-form button[type=submit] {
-  background: #4154f1;
+  background: #888888;
   border: 0;
   padding: 10px 30px;
   color: #fff;
@@ -1143,7 +1155,7 @@ h6 {
 .error-404 h1 {
   font-size: 180px;
   font-weight: 700;
-  color: #4154f1;
+  color: #888888;
   margin-bottom: 0;
   line-height: 150px;
 }

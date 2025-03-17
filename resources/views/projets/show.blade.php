@@ -17,6 +17,7 @@
                 <th>Titre</th>
                 <th>Description</th>
                 <th>Statut</th>
+                <th>Assigné à</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -30,6 +31,8 @@
                         {{ ucfirst($tache->statut) }}
                     </span>
                 </td>
+                <td>{{ $tache->user_id }}</td>
+
                 <td>
                     <form action="{{ route('taches.toggleStatus', $tache->id) }}" method="POST">
                         @csrf

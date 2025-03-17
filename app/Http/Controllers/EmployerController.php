@@ -43,4 +43,11 @@ class EmployerController extends Controller
 
         return redirect()->route('profile')->with('success', 'Profil employé créé.');
     }
+    public function listes()
+    {
+        //
+
+        $employers = Employer::all();
+        return view('utilisateur.show', compact('employers'));
+    }
 }

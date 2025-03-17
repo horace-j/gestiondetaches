@@ -193,217 +193,83 @@
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
 
-        <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="POST" action="#">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-            </form>
-        </div><!-- End Search Bar -->
+
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
-                <li class="nav-item d-block d-lg-none">
-                    <a class="nav-link nav-icon search-bar-toggle " href="#">
-                        <i class="bi bi-search"></i>
-                    </a>
-                </li><!-- End Search Icon-->
 
-                <li class="nav-item dropdown">
 
-                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                        <i class="bi bi-bell"></i>
-                        <span class="badge bg-primary badge-number">4</span>
-                    </a><!-- End Notification Icon -->
 
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-                        <li class="dropdown-header">
-                            You have 4 new notifications
-                            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
+                <li class="mx-5 ">
 
-                        <li class="notification-item">
-                            <i class="bi bi-exclamation-circle text-warning"></i>
-                            <div>
-                                <h4>Lorem Ipsum</h4>
-                                <p>Quae dolorem earum veritatis oditseno</p>
-                                <p>30 min. ago</p>
-                            </div>
-                        </li>
 
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
 
-                        <li class="notification-item">
-                            <i class="bi bi-x-circle text-danger"></i>
-                            <div>
-                                <h4>Atque rerum nesciunt</h4>
-                                <p>Quae dolorem earum veritatis oditseno</p>
-                                <p>1 hr. ago</p>
-                            </div>
-                        </li>
+                    @if (Route::has('login'))
+                    <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                        @auth
+                        <!-- Nom de l'utilisateur connecté avec option de déconnexion au clic -->
+                        <div style="display: inline-block; position: relative;">
+                            <span style="font-size: 18px; font-weight:bold; padding:5px; color:black; cursor: pointer;" id="user-name">
+                                {{ Auth::user()->name }}
+                            </span>
 
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
 
-                        <li class="notification-item">
-                            <i class="bi bi-check-circle text-success"></i>
-                            <div>
-                                <h4>Sit rerum fuga</h4>
-                                <p>Quae dolorem earum veritatis oditseno</p>
-                                <p>2 hrs. ago</p>
-                            </div>
-                        </li>
 
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
+                            <!-- Bouton de déconnexion (affiché au clic) -->
+                            <form method="POST" action="/logout" style="display:none; position: absolute; top: 25px; left: 0; background: white; border: 1px solid #ddd; padding: 5px; border-radius: 5px; z-index: 10;" id="logout-form">
+                                @csrf
+                                <button type="submit"
+                                    style="font-size: 16px; font-weight:bold; text-decoration:none; color:black; background:none; border:none; cursor:pointer;"
+                                    class="hover:text-red-600">
+                                    Déconnexion
+                                </button>
+                            </form>
+                        </div>
 
-                        <li class="notification-item">
-                            <i class="bi bi-info-circle text-primary"></i>
-                            <div>
-                                <h4>Dicta reprehenderit</h4>
-                                <p>Quae dolorem earum veritatis oditseno</p>
-                                <p>4 hrs. ago</p>
-                            </div>
-                        </li>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const userName = document.getElementById('user-name');
+                                const logoutForm = document.getElementById('logout-form');
 
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li class="dropdown-footer">
-                            <a href="#">Show all notifications</a>
-                        </li>
+                                // Affiche ou cache le formulaire de déconnexion lors du clic
+                                userName.addEventListener('click', () => {
+                                    if (logoutForm.style.display === 'none' || logoutForm.style.display === '') {
+                                        logoutForm.style.display = 'block';
+                                    } else {
+                                        logoutForm.style.display = 'none';
+                                    }
+                                });
 
-                    </ul><!-- End Notification Dropdown Items -->
+                                // Cache le formulaire si on clique ailleurs sur la page
+                                document.addEventListener('click', (e) => {
+                                    if (!userName.contains(e.target) && !logoutForm.contains(e.target)) {
+                                        logoutForm.style.display = 'none';
+                                    }
+                                });
+                            });
+                        </script>
+                        @else
+                        <!-- Lien pour se connecter -->
+                        <a href="/dashboard"
+                            style="font-size: 20px; font-weight:bold; text-decoration:none; padding:5px; color:black"
+                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
 
-                </li><!-- End Notification Nav -->
+                            <span style="font-size: 10px;">
+                            </span>
+                        </a>
 
-                <li class="nav-item dropdown">
+                        <!-- Lien pour s'enregistrer -->
+                        @if (Route::has('register'))
+                        <a href="{{ route('register') }}"
+                            style="font-size: 20px; font-weight:bold; text-decoration:none; padding:5px; color:black"
+                            class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                        </a>
+                        @endif
+                        @endauth
+                    </div>
+                    @endif
 
-                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                        <i class="bi bi-chat-left-text"></i>
-                        <span class="badge bg-success badge-number">3</span>
-                    </a><!-- End Messages Icon -->
-
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-                        <li class="dropdown-header">
-                            You have 3 new messages
-                            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li class="message-item">
-                            <a href="#">
-                                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
-                                <div>
-                                    <h4>Maria Hudson</h4>
-                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                    <p>4 hrs. ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li class="message-item">
-                            <a href="#">
-                                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
-                                <div>
-                                    <h4>Anna Nelson</h4>
-                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                    <p>6 hrs. ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li class="message-item">
-                            <a href="#">
-                                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
-                                <div>
-                                    <h4>David Muldon</h4>
-                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                    <p>8 hrs. ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li class="dropdown-footer">
-                            <a href="#">Show all messages</a>
-                        </li>
-
-                    </ul><!-- End Messages Dropdown Items -->
-
-                </li><!-- End Messages Nav -->
-
-                <li class="nav-item dropdown pe-3">
-
-                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
-                    </a><!-- End Profile Iamge Icon -->
-
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                        <li class="dropdown-header">
-                            <h6>Kevin Anderson</h6>
-                            <span>Web Designer</span>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                <i class="bi bi-person"></i>
-                                <span>My Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                <i class="bi bi-gear"></i>
-                                <span>Account Settings</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                <i class="bi bi-question-circle"></i>
-                                <span>Need Help?</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span>Sign Out</span>
-                            </a>
-                        </li>
-
-                    </ul><!-- End Profile Dropdown Items -->
                 </li><!-- End Profile Nav -->
 
             </ul>
@@ -435,7 +301,7 @@
                             <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                                 <li>
                                     <a href="/employer/create">
-                                        <i class="bi bi-circle"></i><span>Creer</span>
+                                        <i class="bi bi-circle"></i><span>Ajouter votre profil</span>
                                     </a>
                                 </li>
                                 <li>
@@ -445,7 +311,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span>Vos projets</span>
+                                        <i class="bi bi-circle"></i><span>Ajouter un projets</span>
                                     </a>
                                 </li>
                                 <li>
@@ -454,47 +320,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('projets.store') }}" class="{{ Route::is('projets.store') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span>projets.store</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span>Vos projets</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span>Vos projets</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span>Vos projets</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span>Vos projets</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span>Vos projets</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span>Vos projets</span>
+                                    <a href="{{ route('liste') }}" class="{{ Route::is('liste') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span> Listes des employers </span>
                                     </a>
                                 </li>
 
 
-                                <li>
-                                    <a href="components-tooltips.html">
-                                        <i class="bi bi-circle"></i><span>Tooltips</span>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li><!-- End Components Nav -->
 
@@ -638,76 +470,6 @@
 
 
 
-                            @if (Route::has('login'))
-                            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                                @auth
-                                <!-- Nom de l'utilisateur connecté avec option de déconnexion au clic -->
-                                <div style="display: inline-block; position: relative;">
-                                    <span style="font-size: 18px; font-weight:bold; padding:5px; color:black; cursor: pointer;" id="user-name">
-                                        {{ Auth::user()->name }}
-                                    </span>
-
-                                    <a href="/dashboard"
-                                        style="font-size: 20px; font-weight:bold; text-decoration:none; padding:5px; color:black"
-                                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-
-                                        <span style="font-size: 10px;">
-                                        </span>
-                                    </a>
-
-                                    <!-- Bouton de déconnexion (affiché au clic) -->
-                                    <form method="POST" action="/logout" style="display:none; position: absolute; top: 25px; left: 0; background: white; border: 1px solid #ddd; padding: 5px; border-radius: 5px; z-index: 10;" id="logout-form">
-                                        @csrf
-                                        <button type="submit"
-                                            style="font-size: 16px; font-weight:bold; text-decoration:none; color:black; background:none; border:none; cursor:pointer;"
-                                            class="hover:text-red-600">
-                                            Déconnexion
-                                        </button>
-                                    </form>
-                                </div>
-
-                                <script>
-                                    document.addEventListener('DOMContentLoaded', function() {
-                                        const userName = document.getElementById('user-name');
-                                        const logoutForm = document.getElementById('logout-form');
-
-                                        // Affiche ou cache le formulaire de déconnexion lors du clic
-                                        userName.addEventListener('click', () => {
-                                            if (logoutForm.style.display === 'none' || logoutForm.style.display === '') {
-                                                logoutForm.style.display = 'block';
-                                            } else {
-                                                logoutForm.style.display = 'none';
-                                            }
-                                        });
-
-                                        // Cache le formulaire si on clique ailleurs sur la page
-                                        document.addEventListener('click', (e) => {
-                                            if (!userName.contains(e.target) && !logoutForm.contains(e.target)) {
-                                                logoutForm.style.display = 'none';
-                                            }
-                                        });
-                                    });
-                                </script>
-                                @else
-                                <!-- Lien pour se connecter -->
-                                <a href="/dashboard"
-                                    style="font-size: 20px; font-weight:bold; text-decoration:none; padding:5px; color:black"
-                                    class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-
-                                    <span style="font-size: 10px;">
-                                    </span>
-                                </a>
-
-                                <!-- Lien pour s'enregistrer -->
-                                @if (Route::has('register'))
-                                <a href="{{ route('register') }}"
-                                    style="font-size: 20px; font-weight:bold; text-decoration:none; padding:5px; color:black"
-                                    class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                                </a>
-                                @endif
-                                @endauth
-                            </div>
-                            @endif
 
 
                         </li><!-- End Blank Page Nav -->

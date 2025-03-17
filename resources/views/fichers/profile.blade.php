@@ -70,41 +70,45 @@
                     <div class="tab-content pt-2">
 
                         <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                            <h5 class="card-title">A propos</h5>
+                            <h5 class="card-title" style="font-weight: bold;">A propos</h5>
                             <p class="small fst-italic" style="font-size: 16px; text-align:justify;">{{ $employer->a_propos }}</p>
 
                             <h5 class="card-title label "> Detail de Profil</h5>
 
                             <div class="row">
-                                <div class="col-lg-3 col-md-4 labele">Full Name</div>
-                                <div class="col-lg-9 col-md-8" style="font-size: 18px;">{{ $employer->prenom }} {{ $employer->nom }}</div>
+                                <div class="col-lg-3 col-md-4 labele">Nom & Prenom</div>
+                                <div class="col-lg-9 col-md-8" style="font-size: 18px;"> : {{ $employer->prenom }} {{ $employer->nom }}</div>
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-3 col-md-4 labele">Company</div>
-                                <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+                                <div class="col-lg-3 col-md-4 labele">IFU</div>
+                                <div class="col-lg-9 col-md-8"> : {{ $employer->ifu }}</div>
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 labele">Job</div>
-                                <div class="col-lg-9 col-md-8">{{ $employer->profession }}</div>
+                                <div class="col-lg-9 col-md-8"> : {{ $employer->profession }}</div>
                             </div>
 
 
 
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 labele">Address</div>
-                                <div class="col-lg-9 col-md-8">{{ $employer->adresse }}</div>
+                                <div class="col-lg-9 col-md-8"> : {{ $employer->adresse }}</div>
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 labele">Phone</div>
-                                <div class="col-lg-9 col-md-8">(+229) {{ $employer->tel }}</div>
+                                <div class="col-lg-9 col-md-8"> : (+229){{ $employer->tel }}</div>
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 labele">Email</div>
-                                <div class="col-lg-9 col-md-8">{{ $employer->mail }}</div>
+                                <div class="col-lg-9 col-md-8"> : {{ $employer->mail }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 labele">Lien_linkedin </div>
+                                <div class="col-lg-9 col-md-8"> : {{ $employer->lien_linkedin }}</div>
                             </div>
 
                         </div>
@@ -125,23 +129,23 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nom & Prenom</label>
                                     <div class="col-md-8 col-lg-9">
                                         <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                                    <label for="A propos" class="col-md-4 col-lg-3 col-form-label">A propos</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
+                                        <textarea name="A propos" class="form-control" id="A propos" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
+                                    <label for="ifu" class="col-md-4 col-lg-3 col-form-label">ifu</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
+                                        <input name="ifu" type="text" class="form-control" id="ifu" value="Lueilwitz, Wisoky and Leuschke">
                                     </div>
                                 </div>
 
@@ -152,12 +156,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input name="country" type="text" class="form-control" id="Country" value="USA">
-                                    </div>
-                                </div>
+
 
                                 <div class="row mb-3">
                                     <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
@@ -180,26 +179,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
-                                    </div>
-                                </div>
 
                                 <div class="row mb-3">
                                     <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
@@ -207,6 +186,7 @@
                                         <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
                                     </div>
                                 </div>
+
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary">Save Changes</button>
