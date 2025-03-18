@@ -31,7 +31,7 @@
                         {{ ucfirst($tache->statut) }}
                     </span>
                 </td>
-                <td>{{ $tache->user_id }}</td>
+                <td style="font-weight: bold; ">{{ $tache->user ? strtoupper($tache->user->name) : 'NON ASSIGNÉ' }}</td>
 
                 <td>
                     <form action="{{ route('taches.toggleStatus', $tache->id) }}" method="POST">

@@ -69,7 +69,7 @@
             <div class="md:w-1/2">
                 <h2 class="text-4xl font-bold mb-6">Gérez vos projets en toute fluidité </h2>
                 <p class="text-gray-600 mb-8">Promanage simplifie l'organisation et la collaboration au sein de notre entreprise pour une meilleure productivité.</p>
-                <a href="/login" class="px-6 py-3 bg-gray-700 text-white rounded-md hover:bg-gray-600">Accéder à l'outil</a>
+                <a href="/home" class="px-6 py-3 bg-gray-700 text-white rounded-md hover:bg-gray-600">Accéder à l'outil</a>
             </div>
             <div class="md:w-1/2 mt-10 md:mt-0">
                 <img src="images/bac.webp" alt="Gestion de projets" class="animated-image w-full rounded-lg shdow-lg">

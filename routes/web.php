@@ -9,6 +9,7 @@ use App\Http\Controllers\EmployerController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProjetController;
 use App\Http\Controllers\TacheController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,7 +52,8 @@ Route::middleware('guest')->group(function () {
 });
 
 
-Route::get('/home', [RegisteredUserController::class, 'homes'])->name('home');
+Route::get('/home', [DashboardController::class, 'homes'])->name('home');
+
 
 // Route de déconnexion
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
