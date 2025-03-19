@@ -55,28 +55,77 @@ class ProjetController extends Controller
         $projet = Projet::with('taches')->findOrFail($id);
         return view('projets.show', compact('projet'));
     }
+    public function detaills($id)
+    {
+        //
+
+        $projet = Projet::with('taches')->findOrFail($id);
+        return view('projets.voir', compact('projet'));
+    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Projet $projet)
+
+    public function edit($id)
     {
-        //
+        $projet = Projet::findOrFail($id);
+        return view('projets.edit', compact('projet'));
     }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Projet $projet)
+
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'titre' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'date_debut' => 'required|date',
+            'date_fin' => 'required|date|after_or_equal:date_debut',
+        ]);
+
+        $projet = Projet::findOrFail($id);
+        $projet->update($request->all());
+
+        return redirect()->route('projets.index')->with('success', 'Projet mis à jour avec succès.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Projet $projet)
+
+    public function destroy($id)
     {
-        //
+        $projet = Projet::findOrFail($id);
+        $projet->delete();
+
+        return redirect()->route('projets.index')->with('success', 'Projet supprimé avec succès.');
+    }
+    /* Afficher les projets delete */
+    public function trasheds()
+    {
+        $projets = Projet::onlyTrashed()->get();
+        return view('projets.trashed', compact('projets'));
+    }
+    /* Restaurer */
+
+    public function restore($id)
+    {
+        $projet = Projet::onlyTrashed()->findOrFail($id); // Récupère uniquement les projets supprimés
+        $projet->restore();
+
+        return redirect()->route('projets.index')->with('success', 'Projet restauré avec succès.');
+    }
+
+
+    public function forceDelete($id)
+    {
+        $projet = Projet::withTrashed()->findOrFail($id);
+        $projet->forceDelete();
+
+        return redirect()->route('projets.trashed')->with('success', 'Projet supprimé définitivement.');
     }
 }

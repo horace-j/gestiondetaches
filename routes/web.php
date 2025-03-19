@@ -72,12 +72,16 @@ Route::get('/employer/create', function () {
     return view('employer.create');
 })->middleware('auth')->name('employer.create');
 
+Route::get('/projets/{id}/voir', [ProjetController::class, 'voir'])->name('projets.voire');
+
 
 /* Projet et taches */
 Route::get('/projets/create', [ProjetController::class, 'create'])->name('projets.create');
+Route::get('/projets/trashed', [ProjetController::class, 'trasheds'])->name('projets.trashed');
 
 Route::get('/projets', [ProjetController::class, 'index'])->name('projets.index');
 Route::get('/projets/{id}', [ProjetController::class, 'show'])->name('projets.show');
+
 
 Route::put('/taches/{id}/toggle-status', [TacheController::class, 'toggleStatus'])->name('taches.toggleStatus');
 Route::post('/projets', [ProjetController::class, 'store'])->name('projets.store');
@@ -85,3 +89,12 @@ Route::post('/projets', [ProjetController::class, 'store'])->name('projets.store
 Route::get('/projets/{projet}/taches/create', [TacheController::class, 'create'])->name('taches.create');
 Route::post('/projets/{projet}/taches', [TacheController::class, 'store'])->name('taches.store');
 Route::get('/liste', [EmployerController::class, 'listes'])->name('liste');
+
+Route::get('/projets/{id}/edit', [ProjetController::class, 'edit'])->name('projets.edit');
+Route::put('/projets/{id}', [ProjetController::class, 'update'])->name('projets.update');
+Route::delete('/projets/{id}', [ProjetController::class, 'destroy'])->name('projets.destroy');
+
+Route::put('/projets/{id}/restore', [ProjetController::class, 'restore'])->name('projets.restore');
+
+Route::get('/projets/{id}/restore', [ProjetController::class, 'restore'])->name('projets.restore');
+Route::get('/projets/{id}/force-delete', [ProjetController::class, 'forceDelete'])->name('projets.forceDelete');

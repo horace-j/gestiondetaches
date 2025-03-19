@@ -344,6 +344,20 @@
                                         <i class="bi bi-circle"></i><span> Listes des employers </span>
                                     </a>
                                 </li>
+                                <li>
+                                    <i class="bi bi-circle"></i><span> edit projets </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('liste') }}" class="{{ Route::is('liste') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span> Listes des employers </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('liste') }}" class="{{ Route::is('liste') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span> Listes des employers </span>
+                                    </a>
+                                </li>
 
 
 

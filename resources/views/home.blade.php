@@ -3,12 +3,17 @@
     .card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         opacity: 0.9;
+        transition: 3s !important;
+
     }
 
     .card:hover {
         transform: scale(1.05);
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
         opacity: 1;
+        transform: scale(1.1) !important;
+        transition: 3s !important;
+
     }
 
     /* Couleurs adoucies */
