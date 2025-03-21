@@ -72,7 +72,7 @@ Route::get('/employer/create', function () {
     return view('employer.create');
 })->middleware('auth')->name('employer.create');
 
-Route::get('/projets/{id}/voir', [ProjetController::class, 'voir'])->name('projets.voire');
+Route::get('/projets/{id}/details', [ProjetController::class, 'details'])->name('projets.voire');
 
 
 /* Projet et taches */

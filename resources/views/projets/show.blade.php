@@ -10,8 +10,13 @@
     </div>
 
     <!-- Tâches du projet dans un tableau -->
-    <h2 class="mt-5 mb-3">Tâches</h2>
-    <table class="table table-striped table-bordered">
+    <div>
+        <h2 class="mt-5 mb-3">Tâches</h2>
+        <a href="{{ route('taches.create', $projet->id) }}" class="btn btn-primary btn-sm flex-grow-1">
+            <i class="fas fa-plus me-1"></i> Ajouter une autre tâche
+        </a> <br>
+    </div>
+    <table class="py-4 table table-striped table-bordered">
         <thead>
             <tr>
                 <th>Titre</th>

@@ -55,7 +55,7 @@ class ProjetController extends Controller
         $projet = Projet::with('taches')->findOrFail($id);
         return view('projets.show', compact('projet'));
     }
-    public function detaills($id)
+    public function details($id)
     {
         //
 
