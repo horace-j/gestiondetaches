@@ -12,6 +12,13 @@
     <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
 
+    @php
+    $userHasEmployerProfile = App\Models\Employer::where('mail', Auth::user()->email)->exists();
+    @endphp
+
+    @if($userHasEmployerProfile)
+    <div class="alert alert-warning" style="font-size: 30px;">Accès refusé : un profil actif est déjà associé à votre compte.</div>
+    @else
     <form method="POST" action="{{ route('employer.store') }}" enctype="multipart/form-data">
         @csrf
 
@@ -51,14 +58,11 @@
             @error('adresse') <small class="text-danger">{{ $message }}</small> @enderror
         </div>
 
-
         <div class="mb-3">
-            <label for="profession" class="form-label">profession</label>
+            <label for="profession" class="form-label">Profession</label>
             <input type="text" class="form-control" name="profession" value="{{ old('profession') }}" required>
             @error('profession') <small class="text-danger">{{ $message }}</small> @enderror
         </div>
-
-
 
         <div class="mb-3">
             <label for="a_propos" class="form-label">À propos</label>
@@ -80,5 +84,6 @@
 
         <button type="submit" class="btn btn-primary w-100">Créer mon profil</button>
     </form>
+    @endif
 </div>
 @endsection

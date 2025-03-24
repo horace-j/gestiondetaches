@@ -41,6 +41,21 @@
                 </div>
             </div>
 
+
+
+            <div class="card">
+                <div class="card-body profile-card pt-4 d-flex flex-column align-items-">
+
+                    <h2 style="text-align: center;">Profile d'utilisation</h2> <br>
+                    <h2 style="font-weight: bold; text-transform:uppercase;"> Noms : {{ $user->name }} </h2> <!-- Prenom et nom de l'employer -->
+                    <h3 style="font-weight: bold; text-transform:uppercase;">Mail : {{ $user->email }}</h3><!-- Le metier ou sa fonction dans entreprise -->
+                    <h3 style="font-weight: bold; text-transform:uppercase;"> RÔLE : {{ $user->role }}</h3><!-- Le metier ou sa fonction dans entreprise -->
+                    <div class="social-links mt-2">
+                        <a style="font-size: 30px;" href="{{ $user->email }}" class="instagram"><i class="fa-solid fa-envelope " style="color: #888888;"></i></a> <!-- Lien de mail -->
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="col-xl-8">

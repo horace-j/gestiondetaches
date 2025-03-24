@@ -55,8 +55,8 @@
 
             <nav>
                 <ul class=" flex space-x-6">
-                    <li><a href="/" class=" text-3xl font-bold hover:text-gray-500">Accueil</a></li>
-
+                    <!--                     <li><a href="/" class=" text-3xl font-bold hover:text-gray-500">Accueil</a></li>
+ -->
                 </ul>
             </nav>
             <a href="/login" class="px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600">Connexion</a>

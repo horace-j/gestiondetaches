@@ -35,7 +35,7 @@
 </style>
 
 @section('content')
-<section>
+<section class="py-5">
     <div class="pagetitle">
         <h1>Tableau de Bord</h1>
         <nav>

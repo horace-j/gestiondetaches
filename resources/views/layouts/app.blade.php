@@ -291,15 +291,41 @@
 
                             <a class="nav-link collapsed" href="/home">
                                 <i class="bi bi-grid"></i>
-                                <span>Dashboard</span>
+                                <span>Tableau de bord</span>
                             </a>
                         </li><!-- End Dashboard Nav -->
 
+
+
                         <li class="nav-item">
-                            <a class="nav-link " data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                                <i class="bi bi-menu-button-wide"></i><span>Utilisateur</span><i class="bi bi-chevron-down ms-auto"></i>
+                            <a class="nav-link {{ Route::is('projets.create', 'projets.index', 'projets.trashed') ? '' : 'collapsed' }}" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                                <i class="bi bi-journal-text"></i><span>Projets et taches</span><i class="bi bi-chevron-down ms-auto"></i>
                             </a>
-                            <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+                            <ul id="forms-nav" class="nav-content collapse {{ Route::is('projets.create', 'projets.index', 'projets.trashed') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+                                <li>
+                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>Ajouter un projet</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('projets.index') }}" class="{{ Route::is('projets.index') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>Liste des projets</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('projets.trashed') }}" class="{{ Route::is('projets.trashed') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>Liste des projets supprimés</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li><!-- End Forms Nav  bien -->
+
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::is('profile', 'liste') ? '' : 'collapsed' }}" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                                <i class="bi bi-layout-text-window-reverse"></i><span>Utilisateurs</span><i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <ul id="tables-nav" class="nav-content collapse {{ Route::is('profile', 'liste') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
                                 <li>
                                     <a href="/employer/create">
                                         <i class="bi bi-circle"></i><span>Ajouter votre profil</span>
@@ -307,111 +333,37 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('profile') }}" class="{{ Route::is('profile') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span>Votre profile</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route('liste') }}" class="{{ Route::is('liste') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span> Listes des employers </span>
-                                    </a>
-                                </li>
-
-
-
-                            </ul>
-                        </li><!-- End Components Nav -->
-
-
-                        <li class="nav-item">
-                            <a class="nav-link " data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                                <i class="bi bi-menu-button-wide"></i><span>taches</span><i class="bi bi-chevron-down ms-auto"></i>
-                            </a>
-                            <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
-
-                                <li>
-                                    <a href="{{ route('projets.create') }}" class="{{ Route::is('projets.create') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span>Ajouter un projets</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('projets.index') }}" class="{{ Route::is('projets.index') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span> Listes des projets </span>
+                                        <i class="bi bi-circle"></i><span>Votre profil</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('liste') }}" class="{{ Route::is('liste') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span> Listes des employers </span>
+                                        <i class="bi bi-circle"></i><span>Liste des employés</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <i class="bi bi-circle"></i><span> edit projets </span>
+                                    <a href="{{ route('users.index') }}" class="{{ Route::is('users.index') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>users index</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('liste') }}" class="{{ Route::is('liste') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span> Listes des employers </span>
+                                    <a href="{{ route('users.create') }}" class="{{ Route::is('users.create') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>users create</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('liste') }}" class="{{ Route::is('liste') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span> Listes des employers </span>
+                                    <a href="{{ route('users.index') }}" class="{{ Route::is('users.index') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>users index</span>
                                     </a>
                                 </li>
+
 
 
 
                             </ul>
-                        </li><!-- End Components Nav -->
+                        </li><!-- End Tables Nav  bien-->
 
 
-
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                                <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
-                            </a>
-                            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                                <li>
-                                    <a href="forms-elements.html">
-                                        <i class="bi bi-circle"></i><span>Form Elements</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="forms-layouts.html">
-                                        <i class="bi bi-circle"></i><span>Form Layouts</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="forms-editors.html">
-                                        <i class="bi bi-circle"></i><span>Form Editors</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="forms-validation.html">
-                                        <i class="bi bi-circle"></i><span>Form Validation</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li><!-- End Forms Nav -->
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                                <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
-                            </a>
-                            <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                                <li>
-                                    <a href="tables-general.html">
-                                        <i class="bi bi-circle"></i><span>General Tables</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="tables-data.html">
-                                        <i class="bi bi-circle"></i><span>Data Tables</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li><!-- End Tables Nav -->
 
                         <li class="nav-item">
                             <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">

@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProjetController;
 use App\Http\Controllers\TacheController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,10 +30,6 @@ Route::get('/', function () {
 
 
 
-// Page d'accueil
-Route::get('/', function () {
-    return view('welcome');
-});
 
 // Routes d'authentification (login, register, reset password, etc.)
 Route::middleware('guest')->group(function () {
@@ -61,9 +60,7 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/profile', function () {
-        return view('fichers.profile', ['employer' => Auth::user()->employer]);
-    })->name('profile');
+    Route::get('/profile', [EmployerController::class, 'show'])->name('profile');
 
     Route::post('/employer/create', [EmployerController::class, 'store'])->name('employer.store');
 });
@@ -98,3 +95,23 @@ Route::put('/projets/{id}/restore', [ProjetController::class, 'restore'])->name(
 
 Route::get('/projets/{id}/restore', [ProjetController::class, 'restore'])->name('projets.restore');
 Route::get('/projets/{id}/force-delete', [ProjetController::class, 'forceDelete'])->name('projets.forceDelete');
+
+
+
+// Afficher la liste des utilisateurs
+Route::get('users', [UserController::class, 'index'])->name('users.index');
+
+// Créer un nouvel utilisateur (affiche le formulaire)
+Route::get('users/create', [UserController::class, 'create'])->name('users.create');
+
+// Sauvegarder un nouvel utilisateur
+Route::post('users', [UserController::class, 'store'])->name('users.store');
+
+// Afficher le formulaire de modification d'un utilisateur
+Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+
+// Mettre à jour un utilisateur
+Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
+
+// Supprimer un utilisateur
+Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
