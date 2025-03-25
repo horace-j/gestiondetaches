@@ -178,6 +178,46 @@
             background-color: darkgrey;
             /* Fond en gris foncé au survol */
         }
+
+        .promanage-footer {
+            background-color: #ffffff;
+            color: #333333;
+            padding: 50px 0 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-top: 1px solid #e0e0e0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            gap: 30px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 30px;
+        }
+
+        /* ... (conservez tout le reste du CSS existant jusqu'à .contact-info) ... */
+
+
+        .legal-links {
+            margin-top: 10px;
+        }
+
+        .legal-links a {
+            color: #555555;
+            margin: 0 10px;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        .legal-links a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -322,13 +362,14 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::is('profile', 'liste') ? '' : 'collapsed' }}" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                            <a class="nav-link {{ Route::is('profile', 'liste', 'users.index', 'employer.store') ? '' : 'collapsed' }}" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
                                 <i class="bi bi-layout-text-window-reverse"></i><span>Utilisateurs</span><i class="bi bi-chevron-down ms-auto"></i>
                             </a>
-                            <ul id="tables-nav" class="nav-content collapse {{ Route::is('profile', 'liste') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+                            <ul id="tables-nav" class="nav-content collapse {{ Route::is('profile', 'liste', 'users.index', 'employer.store') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+
                                 <li>
-                                    <a href="/employer/create">
-                                        <i class="bi bi-circle"></i><span>Ajouter votre profil</span>
+                                    <a href="{{ route('employer.store') }}" class="{{ Route::is('employer.store') ? 'actived' : '' }}">
+                                        <i class="bi bi-circle"></i><span>Complter votre profile</span>
                                     </a>
                                 </li>
                                 <li>
@@ -343,19 +384,10 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('users.index') }}" class="{{ Route::is('users.index') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span>users index</span>
+                                        <i class="bi bi-circle"></i><span>Listes des utilisateurs</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('users.create') }}" class="{{ Route::is('users.create') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span>users create</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('users.index') }}" class="{{ Route::is('users.index') ? 'actived' : '' }}">
-                                        <i class="bi bi-circle"></i><span>users index</span>
-                                    </a>
-                                </li>
+
 
 
 
@@ -478,9 +510,30 @@
         </div>
     </div>
 
+    <footer class="promanage-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                </div>
+                <!-- Colonne 1 : Logo + Description -->
+                <div class="col-md-4">
+                    <img src="/images/LOGO.png" height="250px" alt="ProManage Logo" class="footer-logo">
+                    <p class="footer-description">
+                        ProManage - Notre solution complète de gestion de projet professionnelle.
+                        Optimisez notre workflow et boostez notre productivité.
+                    </p>
 
-    <footer>
-        &copy; 2025 - Tous droits réservés
+                    <!-- Copyright -->
+                    <div class="footer-bottom">
+                        <p>&copy; 2025 ProManage. Tous droits réservés.</p>
+                    </div>
+                </div>
+                <!-- Colonne 3 : Contact -->
+                <div class="col-md-4 ">
+
+                </div>
+            </div>
+        </div>
     </footer>
 
     <!-- Bootstrap JS -->

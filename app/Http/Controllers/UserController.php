@@ -67,9 +67,7 @@ class UserController extends Controller
         $user->name = $validated['name'];
         $user->email = $validated['email'];
 
-        if ($validated['password']) {
-            $user->password = Hash::make($validated['password']);
-        }
+
 
         $user->role = $validated['role'];
         $user->save();

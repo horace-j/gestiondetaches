@@ -1,45 +1,4 @@
 @extends('layouts.app')
-
-@section('content')
-<div class="container py-5">
-    <h1 class="text-center mb-4 py-4">Liste des projets</h1>
-
-    <div class="row">
-        @foreach ($employers as $employer)
-        <div class="col-md-4 mb-4">
-            <div class="card border-0 shadow-lg rounded-3 hover-card">
-                <div class="card-body text-center">
-                    <div class="position-relative">
-                        <img src="{{ asset('storage/' . $employer->image) }}"
-                            class="rounded-circle border border-3 border-primary mb-3"
-                            alt="Profile" width="120px" height="120px">
-                    </div>
-
-                    <h5 class="fw-bold">{{ $employer->nom }} {{ $employer->prenom }}</h5>
-                    <p class="text-muted mb-2">{{ $employer->profession }}</p>
-
-                    <div class="text-start mt-3">
-                        <p><strong>Mail :</strong> <span class="text-muted">{{ $employer->mail }}</span></p>
-                        <p><strong>Téléphone :</strong> <span class="text-muted">{{ $employer->tel }}</span></p>
-                        <p><strong>Adresse :</strong> <span class="text-muted">{{ $employer->adresse }}</span></p>
-                        <p><strong>IFU :</strong> <span class="text-muted">{{ $employer->ifu }}</span></p>
-                        <p><strong>LinkedIn :</strong> <a href="{{ $employer->lien_linkedin }}" target="_blank">{{ $employer->lien_linkedin }}</a></p>
-
-                        <p><strong>À propos :</strong></p>
-                        <p class="text-muted text-justify" style="text-align: justify;">{{ $employer->a_propos }}</p>
-                    </div>
-
-                    <div class="mt-3">
-                        <button class="btn btn-outline-primary btn-sm">Voir profil</button>
-                        <button class="btn btn-outline-secondary btn-sm">Contacter</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endforeach
-    </div>
-</div>
-
 <style>
     .hover-card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -49,5 +8,90 @@
         transform: translateY(-5px);
         box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
     }
+
+    legend {
+        all: revert;
+    }
+
+    .reset {
+        all: revert;
+        border-radius: 15px;
+
+    }
 </style>
+@section('content')
+
+
+@if(in_array(Auth::user()->role, ['Admin', 'Superviseur', ]))
+
+<section>
+    <div class="container py-5">
+        <h1 class="text-center mb-4 py-4">Liste des mployés</h1>
+
+        <div class="row">
+            @foreach ($employers as $employer)
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-lg rounded-3 hover-card">
+                    <div class="card-body text-center">
+                        <div class="position-relative">
+                            <img src="{{ asset('storage/' . $employer->image) }}"
+                                class="rounded-circle border border-3 border-primary mb-3"
+                                alt="Profile" width="120px" height="120px">
+                        </div>
+
+                        <h5 class="fw-bold">{{ $employer->nom }} {{ $employer->prenom }}</h5>
+                        <p class="text-muted mb-2">{{ $employer->profession }}</p>
+
+                        <div class="text-start mt-3">
+                            <p><strong>Mail :</strong> <span class="text-muted">{{ $employer->mail }}</span></p>
+                            <p><strong>Téléphone :</strong> <span class="text-muted">{{ $employer->tel }}</span></p>
+                            <p><strong>Adresse :</strong> <span class="text-muted">{{ $employer->adresse }}</span></p>
+                            <p><strong>IFU :</strong> <span class="text-muted">{{ $employer->ifu }}</span></p>
+                            <p><strong>LinkedIn :</strong> <a href="{{ $employer->lien_linkedin }}" target="_blank">{{ $employer->lien_linkedin }}</a></p>
+
+                            <p><strong>À propos :</strong></p>
+                            <p class="text-muted text-justify" style="text-align: justify;">{{ $employer->a_propos }}</p>
+                        </div>
+
+                        <div class="mt-3">
+                            <button class="btn btn-outline-primary btn-sm">Voir profil</button>
+                            <button class="btn btn-outline-secondary btn-sm">Contacter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+
+
+</section>
+
+
+@else
+
+<section class="py-5">
+    <fieldset class="reset">
+        <legend style="color: black; font-family:'Times New Roman', Times, serif; font-weight:bold; font-size:20px; " class="reset">Note d'information</legend>
+
+
+        <div class="container ">
+            <h6 style="text-align: end;"> Votre profil : <span>{{ Auth::user()->role }}</span> </h6>
+            <p class="Infos" style="text-align:center; padding:20px;">
+                <b style="text-decoration:underline; font-size:20px; "></b> <span style="text-align: justify; font-size:20px; ">L'accès au contenu de cette page est limité à certains profils. Votre profil actuel ne le permet pas.</span>
+
+            </p>
+            <!-- <p style="text-align:end !important;">
+            <a href="/dashboard" class="btn btn-secondary">Retour au tableau de bord</a>
+
+        </p> -->
+        </div>
+    </fieldset> <br>
+
+</section>
+
+@endif
+
+
+
 @endsection
