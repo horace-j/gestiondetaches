@@ -17,7 +17,7 @@
 
 <section>
 
-    @if(in_array(Auth::user()->role, ['Admin', 'Superviseur', ]))
+    @if(in_array(Auth::user()->role, ['Admin' ]))
 
     <div class="container mt-5">
         <h1 class="text-center mb-4">Liste des utilisateurs</h1>
@@ -70,7 +70,6 @@
 
 
     @else
-    {{-- Contenu pour tous les autres rôles --}}
 
     <section class="py-5">
         <fieldset class="reset">

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Projet;
 use Illuminate\Http\Request;
+use App\Models\Notification;
+use Illuminate\Support\Str;
 
 class ProjetController extends Controller
 {
@@ -31,6 +33,9 @@ class ProjetController extends Controller
      * Store a newly created resource in storage.
      */
 
+
+
+
     public function store(Request $request)
     {
         $request->validate([
@@ -40,10 +45,28 @@ class ProjetController extends Controller
             'date_fin' => 'required|date|after_or_equal:date_debut',
         ]);
 
-        Projet::create($request->all());
+        $projet = Projet::create($request->all());
 
-        return redirect()->route('projets.index')->with('success', 'Projet créé avec succès.');
+        // Créer une notification
+        Notification::create([
+            'titre' => 'Nouveau Projet Créé',
+            'message' => "Le projet '{$projet->titre}' a été créé avec succès.",
+        ]);
+
+        return redirect()->route('projets.index')->with('success', 'Projet créé avec succès !');
     }
+
+
+    public function markAsRead(Request $request)
+    {
+        $notification = \App\Models\Notification::find($request->id);
+        if ($notification) {
+            $notification->update(['is_read' => true]);
+            return response()->json(['success' => true]);
+        }
+        return response()->json(['success' => false], 404);
+    }
+
 
     /**
      * Display the specified resource.

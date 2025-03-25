@@ -238,7 +238,43 @@
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
+                <li>
+                    @php
+                    $notifications = \App\Models\Notification::where('is_read', false)
+                    ->latest()
+                    ->take(5)
+                    ->get();
+                    $notificationsCount = $notifications->count();
+                    @endphp
 
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="bi bi-bell"></i>
+                            @if($notificationsCount > 0)
+                            <span class="badge bg-danger" id="notif-count">{{ $notificationsCount }}</span>
+                            @endif
+                        </a>
+
+                        <ul class="dropdown-menu" id="notif-list">
+                            @foreach($notifications as $notification)
+                            <li id="notif-{{ $notification->id }}">
+                                <a class="dropdown-item notif-item" href="{{ route('projets.voire', $notification->projet_id ?? '#') }}" data-id="{{ $notification->id }}">
+                                    <strong>{{ $notification->titre }}</strong>
+                                    <p>{{ $notification->message }}</p>
+                                    <small>{{ $notification->created_at->diffForHumans() }}</small>
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+
+                        <form action="{{ route('notifications.read') }}" method="POST" id="mark-all-read">
+                            @csrf
+                            <button type="submit" class="" style="font-size: 10px; color:black; border:none; background-color: white; ">Marquer tout comme lu</button>
+                        </form>
+                    </div>
+
+
+                </li>
 
 
                 <li class="mx-5 ">
@@ -397,105 +433,9 @@
 
 
 
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-                                <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
-                            </a>
-                            <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                                <li>
-                                    <a href="charts-chartjs.html">
-                                        <i class="bi bi-circle"></i><span>Chart.js</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="charts-apexcharts.html">
-                                        <i class="bi bi-circle"></i><span>ApexCharts</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="charts-echarts.html">
-                                        <i class="bi bi-circle"></i><span>ECharts</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li><!-- End Charts Nav -->
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                                <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
-                            </a>
-                            <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                                <li>
-                                    <a href="icons-bootstrap.html">
-                                        <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="icons-remix.html">
-                                        <i class="bi bi-circle"></i><span>Remix Icons</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="icons-boxicons.html">
-                                        <i class="bi bi-circle"></i><span>Boxicons</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li><!-- End Icons Nav -->
-
-                        <li class="nav-heading">Pages</li>
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="users-profile.html">
-                                <i class="bi bi-person"></i>
-                                <span>Profile</span>
-                            </a>
-                        </li><!-- End Profile Page Nav -->
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="pages-faq.html">
-                                <i class="bi bi-question-circle"></i>
-                                <span>F.A.Q</span>
-                            </a>
-                        </li><!-- End F.A.Q Page Nav -->
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="pages-contact.html">
-                                <i class="bi bi-envelope"></i>
-                                <span>Contact</span>
-                            </a>
-                        </li><!-- End Contact Page Nav -->
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="pages-register.html">
-                                <i class="bi bi-card-list"></i>
-                                <span>Register</span>
-                            </a>
-                        </li><!-- End Register Page Nav -->
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="pages-login.html">
-                                <i class="bi bi-box-arrow-in-right"></i>
-                                <span>Login</span>
-                            </a>
-                        </li><!-- End Login Page Nav -->
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="pages-error-404.html">
-                                <i class="bi bi-dash-circle"></i>
-                                <span>Error 404</span>
-                            </a>
-                        </li><!-- End Error 404 Page Nav -->
-
-                        <li class="nav-item">
 
 
 
-
-
-                        </li><!-- End Blank Page Nav -->
-
-                    </ul>
 
                 </aside><!-- End Sidebar-->
 
@@ -536,8 +476,61 @@
         </div>
     </footer>
 
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".notif-item").click(function(e) {
+                e.preventDefault();
+                var notifId = $(this).data("id");
+                var notifElement = $("#notif-" + notifId);
+
+                $.ajax({
+                    url: "{{ route('notifications.read.single') }}",
+                    type: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        id: notifId
+                    },
+                    success: function(response) {
+                        notifElement.fadeOut(300, function() {
+                            $(this).remove();
+                            let count = $("#notif-list li").length;
+                            if (count === 0) {
+                                $("#notif-count").remove();
+                            } else {
+                                $("#notif-count").text(count);
+                            }
+                        });
+                    }
+                });
+            });
+
+            $("#mark-all-read").submit(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: "{{ route('notifications.read') }}",
+                    type: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        $("#notif-list").empty();
+                        $("#notif-count").remove();
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+
 </body>
 
 </html>

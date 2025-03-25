@@ -26,7 +26,7 @@
 
 <section>
     <div class="container py-5">
-        <h1 class="text-center mb-4 py-4">Liste des mployés</h1>
+        <h1 class="text-center mb-4 py-4">Liste des employés</h1>
 
         <div class="row">
             @foreach ($employers as $employer)

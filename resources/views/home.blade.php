@@ -32,9 +32,28 @@
     .bg-danger {
         background-color: #D9534F !important;
     }
+
+    fieldset,
+    legend {
+        all: revert;
+    }
+
+    .reset {
+        all: revert;
+        border-radius: 15px;
+
+    }
 </style>
 
 @section('content')
+
+
+
+@if(in_array(Auth::user()->role, ['Admin' ]))
+
+
+
+
 <section class="py-5">
     <div class="pagetitle">
         <h1>Tableau de Bord</h1>
@@ -127,6 +146,33 @@
 
 <!-- Inclure Animate.css pour les animations -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+
+@else
+
+<section class="py-5">
+    <fieldset class="reset">
+        <legend style="color: black; font-family:'Times New Roman', Times, serif; font-weight:bold; font-size:20px; " class="reset">Note d'information</legend>
+
+
+        <div class="container ">
+            <h6 style="text-align: end;"> Votre profil : <span>{{ Auth::user()->role }}</span> </h6>
+            <p class="Infos" style="text-align:center; padding:20px;">
+                <b style="text-decoration:underline; font-size:20px; "></b> <span style="text-align: justify; font-size:20px; ">L'accès au contenu de cette page est limité à certains profils. Votre profil actuel ne le permet pas.</span>
+
+            </p>
+            <!-- <p style="text-align:end !important;">
+        <a href="/dashboard" class="btn btn-secondary">Retour au tableau de bord</a>
+
+    </p> -->
+        </div>
+    </fieldset> <br>
+
+</section>
+@endif
+
+
+
 
 <!-- Script pour activer les animations au scroll -->
 <script>

@@ -115,3 +115,10 @@ Route::put('users/{user}', [UserController::class, 'update'])->name('users.updat
 
 // Supprimer un utilisateur
 Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+
+Route::post('/notifications/read', [ProjetController::class, 'markAsRead'])->name('notifications.read');
+
+
+
+Route::post('/notifications/read-single', [ProjetController::class, 'markAsRead'])->name('notifications.read.single');
