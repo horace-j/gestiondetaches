@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('prenom');
             $table->string('tel');
             $table->string('mail')->unique();
-            $table->string('lien_linkedin')->nullable();
+            $table->text('lien_linkedin')->nullable();
             $table->string('adresse');
             $table->string('profession');
             $table->string('image')->nullable();

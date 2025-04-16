@@ -118,22 +118,24 @@
                 <div class="card animate__animated animate__fadeIn">
                     <div class="card-body">
                         <h5 class="card-title">Tâches par Projet</h5>
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Projet</th>
-                                    <th>Nombre de Tâches</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($tachesParProjet as $projet)
-                                <tr class="animate__animated animate__fadeIn">
-                                    <td>{{ $projet->titre }}</td>
-                                    <td>{{ $projet->taches_count }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        <div class="table-responsive"> <!-- Ajout de cette div -->
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Projet</th>
+                                        <th>Nombre de Tâches</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($tachesParProjet as $projet)
+                                    <tr class="animate__animated animate__fadeIn">
+                                        <td>{{ $projet->titre }}</td>
+                                        <td>{{ $projet->taches_count }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

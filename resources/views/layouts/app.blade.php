@@ -30,7 +30,70 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Styles personnalisés -->
+
+
+    <!-- Helpers -->
+    <script src="../../assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+    <script src="../../assets/vendor/js/template-customizer.js"></script>
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../../assets/js/config.js"></script>
+
     <style>
+        /* Sidebar responsive */
+        #sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 70px;
+            /* Ajustez selon la hauteur de votre header */
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        #sidebar.collapsed {
+            left: -250px;
+        }
+
+        .col-md-10 {
+            margin-left: 250px;
+            transition: all 0.3s ease;
+            width: calc(100% - 250px);
+        }
+
+        .col-md-10.expanded {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        /* Mobile first */
+        @media (max-width: 768px) {
+            #sidebar {
+                left: -250px;
+                /* Caché par défaut sur mobile */
+            }
+
+            #sidebar.show-mobile {
+                left: 0;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                /* Ombre pour mieux voir */
+            }
+
+            .col-md-10 {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .toggle-sidebar-btn {
+                display: block !important;
+                /* Toujours visible sur mobile */
+            }
+        }
+
+
         /* Fond blanc pour le body */
         body {
             background-color: #FFFFFF;
@@ -62,7 +125,7 @@
         a:hover {
             color: black !important;
             font-weight: bold !important;
-            text-decoration: underline;
+            text-decoration: none;
         }
 
         /* En-tête gris */
@@ -482,7 +545,51 @@
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.querySelector('.toggle-sidebar-btn');
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.querySelector('.col-md-10');
+
+            // Gestion responsive
+            function handleSidebar() {
+                if (window.innerWidth <= 768) {
+                    // Mode mobile
+                    sidebar.classList.remove('collapsed');
+                    sidebar.classList.toggle('show-mobile');
+                } else {
+                    // Mode desktop
+                    sidebar.classList.remove('show-mobile');
+                    sidebar.classList.toggle('collapsed');
+                    mainContent.classList.toggle('expanded');
+                }
+            }
+
+            toggleBtn.addEventListener('click', handleSidebar);
+
+            // Fermer la sidebar si on clique à côté (mobile)
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768 &&
+                    !sidebar.contains(e.target) &&
+                    !toggleBtn.contains(e.target)) {
+                    sidebar.classList.remove('show-mobile');
+                }
+            });
+
+            // Gérer le redimensionnement
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && sidebar.classList.contains('show-mobile')) {
+                    sidebar.classList.remove('show-mobile');
+                }
+            });
+        });
+
+
+
+
+        /* Mes fonctions */
+
         $(document).ready(function() {
             $(".notif-item").click(function(e) {
                 e.preventDefault();
